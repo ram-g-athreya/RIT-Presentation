@@ -1,20 +1,59 @@
 <?php
-/* @var $this SiteController */
-
-$this->pageTitle=Yii::app()->name;
+$quote = $finance->quote->quote;
+$chart = $finance->chart;
+$table_data = array(
+    'Prev Close' => $quote->PreviousClose,
+    'Open' => $quote->Open,
+    'Volume' => $quote->Volume,
+    'Avg Vol' => $quote->AverageDailyVolume,
+    'MarketCap' => $quote->MarketCapitalization
+);
 ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<div class="col-md-12">
+    <h5>
+        <?php echo "{$quote->Name} ({$quote->symbol})"; ?>
+    </h5>
+    <h3>
+        <?php
+        echo "\$ {$quote->LastTradePriceOnly} ";
+        $change = floatval($quote->Change);
+        ?>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+        <small class="<?php echo ($change >= 0) ? "green" : "red"; ?>">
+            <span class="glyphicon <?php echo ($change >= 0) ? "glyphicon-arrow-up" : "glyphicon-arrow-down"; ?>"></span>
+            <?php echo $change . " ({$quote->ChangeinPercent})"; ?>
+        </small>
+    </h3>
+</div>
 
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
+<div class="container-fluid col-md-12" style="padding-left: 0px;">
+    <div class="col-md-6 col-xs-4">
+        <table class="table">
+            <?php
+            foreach ($table_data as $key => $value) {
+                ?>
+                <tr>
+                    <td>
+                        <?php echo $key; ?>
+                    </td>
+                    <td>
+                        <strong>
+                            <?php echo $value; ?>
+                        </strong>
+                    </td>
+                </tr>
+                <?php
+            }
+            ?>
+        </table>
+    </div>
+    <div class="col-md-6 col-xs-12" style="padding-left: 0px;">
+        <img src="<?php echo $chart; ?>" class="col-md-12 col-xs-4" />
+    </div>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+</div>
+
+<?php
+var_dump($finance);
+?>
