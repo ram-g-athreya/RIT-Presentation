@@ -13,4 +13,4 @@ http://www.ritchennai.org/downloads/IT%20FDP%202014-June.pdf
 
 Sample App Link
 =========
-http://www.ritchennai.org/downloads/IT%20FDP%202014-June.pdf
+http://stocks-5.herokuapp.com/
