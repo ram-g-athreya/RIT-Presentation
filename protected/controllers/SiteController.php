@@ -26,7 +26,7 @@ class SiteController extends Controller {
      */
     public function actionIndex() {
         $this->render('index', array(
-            'finance' => new YahooFinance('GOOG')
+            'finance' => new YahooFinance('YHOO')
         ));
     }
 
@@ -96,8 +96,27 @@ class SiteController extends Controller {
         $this->redirect(Yii::app()->homeUrl);
     }
 
-    public function actionGetStockData($symbol = "GOOG") {
+    public function actionGetStockData($symbol) {
+        $this->renderPartial('stock_details', array('finance' => new YahooFinance($symbol)));
+    }
+
+    public function actionSendMail($name, $email, $symbol) {
         $finance = new YahooFinance($symbol);
+        ob_start();
+        $this->renderPartial('stock_details', array('finance' => $finance));
+        $html = ob_get_clean();
+        
+        
+        $mail = new Mail(array(
+            'to' => $email,
+            'subject' => 'Stock Quote for ' . $finance->quote->quote->Name,
+            'html' => $html
+        ));
+        echo "SUCCESS";
+    }
+
+    public function actionTest() {
+        
     }
 
 }
