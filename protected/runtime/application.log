@@ -1171,3 +1171,11 @@ Stack trace:
 REQUEST_URI=/Site/SendMail?name=ram&email=ramgnsn5%40gmail.com&symbol=goog
 in /Users/ramathreya/Sites/Stocks/protected/controllers/SiteController.php (114)
 in /Users/ramathreya/Sites/Stocks/index.php (13)
+2014/06/27 21:59:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "yii-example".' in /Users/ramathreya/Sites/Stocks/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/ramathreya/Sites/Stocks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('yii-example')
+#1 /Users/ramathreya/Sites/Stocks/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Users/ramathreya/Sites/Stocks/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/yii-example
+---
