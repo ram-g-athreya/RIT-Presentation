@@ -11,6 +11,10 @@ Event Synopsis
 =========
 http://www.ritchennai.org/downloads/IT%20FDP%202014-June.pdf
 
-Sample App Link
+Demo App
 =========
 http://stocks-5.herokuapp.com/
+
+Presentation
+=========
+http://www.slideshare.net/rexmar5/feature-driven-agile-oriented-web-applications
